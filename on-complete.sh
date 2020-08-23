@@ -35,7 +35,7 @@ if [[ $2 -eq 1 ]]; then # single file
 	rclone -v --local-no-check-updated --ignore-existing --exclude "{*.aria2,*.torrent}" --config="rclone.conf" move "$filePath" "DRIVE:$RCLONE_DESTINATION" 2>&1	
 elif [[ $2 -gt 1 ]]; then # multiple file
 	echo "Transfering ${folderName} to Destination"
-	rclone -v --delete-empty-src-dirs --local-no-check-updated --ignore-existing --exclude "{*.txt,*.exe,*.aria2,*.torrent}" --config="rclone.conf" move "$folderPath" "DRIVE:$RCLONE_DESTINATION/${folderName}" 2>&1
+	rclone -v --delete-empty-src-dirs --local-no-check-updated --ignore-existing --exclude "{*.aria2,*.torrent}" --config="rclone.conf" move "$folderPath" "DRIVE:$RCLONE_DESTINATION/${folderName}" 2>&1
 	rclone --config="rclone.conf" rmdirs --leave-root "${folderPath}" 2>&1
 fi
 
